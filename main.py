@@ -1,35 +1,4 @@
-def suma(v1,v2):
-    res =(v1+v2)
-    return res
-
-def promedio(n1,n2,n3):
-    return (n1+n2+n3)/3
-def getRol(rol):
-    if rol=="JEFE" or rol=="GERENTE" or rol =="EJECUTIVO":
-        return "Administrativo"
-    else:
-        if rol == "CONSERJE" or rol=="VENDEDOR" or rol=="MENSAJERO":
-           return "Operativo"
-        else:
-            return "Externo"
-def mensaje(res):
-    if res<0 or res>10:
-        return "Valor invalido!"
-    else:
-        if res>=0 and res<7:
-            return "REPROBADO"
-        if res>=7 and res<=10:
-            return "APROBADO"
-def funcion2():
-    y = 90
-    t = 10
-    u = 100
-    x =(y+t)
-    #print(x)
-    y = "Maria"
-    t = "De los Angeles"
-    x = (y+" "+t+str(u))
-    print(x)
+from procesos.operaciones import *
 
 def funcion3():
     numero1 = int(input("Numero 1:"))
@@ -56,41 +25,23 @@ def funcion5():
 
 def funcion6():
     edad = int(input("Edad:"))
-    if edad<0:
-        print("Invalido!")
-    if edad>=0 and edad<11:
-        print("Infante!")
-    if edad>10 and edad<18:
-        print("Adolescente")
-    if edad>17 and edad<26:
-        print("Joven")
-    if edad>25 and edad < 65:
-        print("Adulto")
-    if edad>64:
-        print("Adulto mayor")
+    msg = getEdad(edad)
+    print(msg)
 
 def funcion7():
     cliente = input("Cliente:")
     producto = input("Producto:")
     precio = float(input("Precio:"))
     cantidad = int(input("Cantidad:"))
-    subtotal =(precio * cantidad)
-    iva = (subtotal*0.12)
-    total = (subtotal+iva)
-    descuento5=(total*0.05)
-    descuento= (subtotal-descuento5)
-    ivad= (descuento*0.12)
-    res = "Subtotal:"+str(round(subtotal,2))+"\nIva:"+str(round(iva,2))\
-    +"\nTotal a pagar:"+str(round(total,2))
-    #print(res)
-    if subtotal>=100:
-        descuento5 = (subtotal * 0.05)
-        descuento = (subtotal - descuento5)
-        ivad = (descuento * 0.12)
-        totalpago = (descuento + ivad)
-        print("EL Decuento es:"+str(round(descuento,2)))
-        print("Iva:" +str(ivad))
-        print("Total a pagar:"+str(round(totalpago,2)))
+    subtotal =getSubtotal(precio,cantidad)
+    iva = getIva(subtotal)
+    des = getDescuento(subtotal)
+    total = getTotal(subtotal,iva,des)
+    res = "Subtotal:"+str(round(subtotal,2))+"\nIva:"+str(round(iva,2)) \
+          + "\nDescuento:" + str(round(des, 2)) +"\nTotal a pagar:"+str(round(total,2))
+    print(res)
+
+
 
 def funcion8():
     c= 1
@@ -154,6 +105,22 @@ def funcion1():
     print("Linea 1")
     nombre = input("Nombre:")
 
+def funcion10():
+    lista = []
+    i=0
+    while i<5:
+        valor = int(input("Valor "+str(i+1)+ ":"))
+        res = getRepeat(lista,valor)
+        if res == True:
+            print("Valor repetido")
+            i = i-1
+        else:
+            lista.append(valor)
+        i = i +1
 
-funcion5()
+    for i in range(len(lista)):
+        print(lista[i])
+
+
+funcion10()
 
