@@ -17,21 +17,7 @@ class Banco:
     def __prueba(self,nombre):
         return "Hola "+nombre
 
-class Auto:
 
-    def __init__(self,placa, marca, n_velocidades):
-        self.__placa = placa
-        self.marca = marca
-        self.n_velocidades = n_velocidades
-
-    def setPlaca(self,placa):
-        self.__placa= placa
-
-    def getPlaca(self):
-        return self.__placa
-
-    def getData(self):
-        return self.__placa+" "+self.marca+" "+str(self.n_velocidades)
 
 class Estudiante:
 
@@ -96,7 +82,60 @@ class Telefono:
     def __prueba(self, nombre):
         return "Hola " + nombre
 
+
+class Vehiculo:
+
+    def __init__(self,marca,modelo,n_velocidad):
+        self.__marca = marca
+        self.modelo = modelo
+        self._n_velocidades = n_velocidad
+
+    def setMarca(self,marca):
+        self.__marca = marca
+
+    def getMarca(self):
+        return self.__marca
+
+    def getData(self):
+        return self.__marca+" "+self.modelo+" "+self._n_velocidades
+
+class Auto(Vehiculo):
+
+    def __init__(self,marca,modelo,n_velocidad,chasis):
+        Vehiculo.__init__(self,marca,modelo,n_velocidad)
+        self.chasis = chasis
+        print(self.__descripcion())
+
+    def __descripcion(self):
+        return "Esto es un auto...."
+
+    def getData(self):
+        return self.getMarca()+" "+self.modelo+" "+str(self._n_velocidades)+" "+self.chasis
+
+
+class Moto(Vehiculo):
+
+    def _init_(self, marca, modelo, n_velocidad):
+        Vehiculo.__init__(self, marca, modelo, n_velocidad)
+
+    def getData(self):
+        return self.getMarca()+ " " + self.modelo + " " + str(self._n_velocidades)
+
+
+class Buque(Vehiculo):
+    def __init__(self, marca, modelo, n_velocidad, eslora_dimension):
+        Vehiculo.__init__(self, marca, modelo, n_velocidad)
+        self.eslora_dimension = eslora_dimension
+
+    def getData(self):
+        return self.getMarca()+ " " + self.modelo + " " + str(self._n_velocidades)+ " " +str( self.eslora_dimension)
+
+
+
 # codigo de prueba
+
+
+"""
 objB = Banco("PICHINCHA","QUITO",30)
 print(objB.getData())
 objB.nombre="GUAYAQUIL"
@@ -104,3 +143,27 @@ objB.direccion="URDESA"
 objB.setN_agencias(50)
 print(objB.getN_agencias())
 print(objB.getData())
+
+
+obA = Auto("MAZDA","2000",6,"XLO989898")
+print(obA.getData())
+obA.setMarca("TOYOTA")
+obA.modelo="2020"
+obA._n_velocidades=8
+print(obA.getMarca())
+print(obA.getData())
+
+obM = Moto("SUZUKI","2000",5)
+print(obM.getData())
+obM.setMarca("HONDA")
+obM.modelo="2045"
+obM._n_velocidades =7
+print(obM.getData())
+"""
+obB = Buque("KIA","2022",9,40.90)
+
+print(obB.getData())
+obB.setMarca("ECUADOR")
+obB.modelo="1908"
+obB.eslora_dimension=100
+print(obB.getData())
