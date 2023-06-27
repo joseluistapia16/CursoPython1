@@ -1,5 +1,6 @@
 from procesos.operaciones import *
-
+from entradas.entradas import *
+"""
 def funcion3():
     numero1 = int(input("Numero 1:"))
     numero2 = int(input("Numero 2:"))
@@ -121,6 +122,14 @@ def funcion10():
     for i in range(len(lista)):
         print(lista[i])
 
+def funcion11():
+    ing = Inputs()
+    num = ing.inputInt("Ingrese su edad:")
 
-funcion10()
+funcion11()
+"""
+from impl.run import *
+if __name__ == '__main__':
+    obr = Run()
+    obr.start()
 

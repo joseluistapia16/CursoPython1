@@ -1,3 +1,11 @@
+class Metodos:
+
+    def saludar(self,nombre):
+        return "hola "+nombre +"."
+
+    def escribir(self,cadena):
+        print(cadena)
+
 class Banco:
 
     def __init__(self,nombre,direccion,n_agencias):
@@ -13,6 +21,9 @@ class Banco:
 
     def getData(self):
         return self.nombre+" "+self.direccion+" "+str(self.__n_agencias)
+
+    def getFields(self):
+        return "Nombre : "+self.nombre+"\nDireccion :"+self.direccion+"\nNumero de agencias :"+str(self.__n_agencias)
 
     def __prueba(self,nombre):
         return "Hola "+nombre
@@ -122,7 +133,7 @@ class Moto(Vehiculo):
         return self.getMarca()+ " " + self.modelo + " " + str(self._n_velocidades)
 
 
-class Buque(Vehiculo):
+class Buque(Vehiculo,Metodos):
     def __init__(self, marca, modelo, n_velocidad, eslora_dimension):
         Vehiculo.__init__(self, marca, modelo, n_velocidad)
         self.eslora_dimension = eslora_dimension
@@ -159,7 +170,7 @@ obM.setMarca("HONDA")
 obM.modelo="2045"
 obM._n_velocidades =7
 print(obM.getData())
-"""
+
 obB = Buque("KIA","2022",9,40.90)
 
 print(obB.getData())
@@ -167,3 +178,16 @@ obB.setMarca("ECUADOR")
 obB.modelo="1908"
 obB.eslora_dimension=100
 print(obB.getData())
+print(obB.saludar("Maria"))
+obB.escribir("Esto es multi herencia")
+
+num1=-1
+while num1<0:
+    try:
+        num1 = int(input("Numero entero:"))
+    except:
+        print("numero incorrecto...")
+        num1 = -1
+print("linea 2")
+print("Linea 3")
+"""
